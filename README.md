@@ -14,3 +14,7 @@ Spotkanka: piątki 14-16, *lab44*
 4. Dostępne środki - fiszka
 5. Podgląd wydatków wg kategorii lub użytkowników z wybranego miesiąca (domyślnie miesiąc obecny) + wykres
 6. Cele finansowe (możliwość otwarcia różnych celi, podgląd, paski postępu, przeliczenie miesięcznego zapotrzebowania na cel)
+
+
+**Baza danych**
+Hostowanie na Microsoft Azure, ponieważ dla studentów jest darmowe.
