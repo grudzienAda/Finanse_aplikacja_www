@@ -15,7 +15,7 @@ create table Members (
 create table Goals (
 	id_goal int not null primary key identity,
 	name_goal nvarchar(50) not null,
-	amount float not null,
+	amount money not null,
 	start_date_goal date not null,
 	end_date_goal date not null,
 	is_completed bit not null default 0,
@@ -30,13 +30,13 @@ create table Categories (
 )
 create table Goals_payment (
 	id_goal int not null foreign key references Goals(id_goal),
-	amount float not null,
+	amount money not null,
 	date_goal_payment date not null,
 	id_user int not null foreign key references Users(id_user)
 )
 create table Payment (
 	id_payment int not null primary key identity,
-	amount float not null,
+	amount money not null,
 	date_payment date not null,
 	id_user int not null foreign key references Users(id_user),
 	id_family int not null foreign key references Families(id_family),
