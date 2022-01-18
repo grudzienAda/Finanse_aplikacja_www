@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+    <link rel="icon" type="image/x-icon" href="../images/money.png">
+    <link rel="stylesheet" href="../css/mainPage.css">
+    <script src="../js/mainPage.js"></script>
+</head>
+
+<body>
+<header>
+    <h1>Financial web aplication <img src="../images/money.png" alt="app logo" width="40">
+</header>
+
+
+<!-- Menu bar -->
+<nav>
+    <ul>
+      <li><a href="#home" onclick="go_to_main_page()">Home</a></li>
+      <li class="dropdown"><a href="#options" class="dropbtn">Options</a>
+        <div class="dropdown-content">
+          <a href="#" onclick="add_payment()">Add payment</a>
+          <a href="#" onclick="join_family()">Join the family</a>
+          <a href="#" onclick="create_family()">Create the new family</a>
+        </div>
+      </li>
+      <li><a href="#profil" onclick="change_page_profil()">Profil</a></li>
+
+      <li style="float:right"><a href="#logout" onclick="logout()">Log out</a></li>
+      <li style="float:right"><a href="#about" onclick="change_page_about()">About</a></li>
+    </ul>
+</nav>
+
+<section>
+    tra
+</section>
+
+<section>
+</section>
+
+<article>
+    Elolskdm
+</article>
+
+
+
+<!-- Modal add payment -->
+<div class="modal fade" id="addPaymentModal" role="dialog">
+<div class="modal-dialog">
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" onclick="close_add_payment()">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <table>
+        <tr>
+            <td><label for="number"><b>Amount: </b></label></td>
+            <td><input type="number" placeholder="Enter amount" required></td>
+        </tr>
+        <tr>
+            <td><label for="date"><b>Date: </b></label></td>
+            <td><input type="date" placeholder="Enter payment date" required><br></td>
+        </tr>
+        <tr>
+            <td><label for="checkbox"><b>Category name: </b></label></td>
+            <td><select name="categories" id="categories">
+                <option value="Job">Job</option>
+                <option value="Health">Health</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Other">Other</option>
+            </select></td>
+        </tr>
+        </table>
+    </div><br>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_add_payment()">Close</button>
+        <button type="button" class="btn btn-primary">Add payment</button>
+    </div>
+    </div>
+      
+</div>  
+</div>
+
+<!-- Modal create family -->
+<div class="modal fade" id="createFamilyModal" role="dialog">
+<div class="modal-dialog">
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">Join the family</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" onclick="close_create_family()">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <label for="text"><b>Family name: </b></label>
+        <input type="text" placeholder="Enter new family name" required>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_create_family()">Close</button>
+        <button type="button" class="btn btn-primary">Create</button>
+    </div>
+    </div>
+      
+</div>  
+</div>
+<!-- Modal join family -->
+<div class="modal fade" id="joinFamilyModal" role="dialog">
+<div class="modal-dialog">
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">Join the family</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" onclick="close_join_family()">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <label for="search"><b>Family name: </b></label>
+        <input type="search" placeholder="Enter family name" required>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_join_family()">Close</button>
+        <button type="button" class="btn btn-primary">Join</button>
+    </div>
+    </div>
+      
+</div>  
+</div>
+
+
+</div> <!-- #main-content -->
+	<footer id="footer" class="footer_columns_3">
+		<div class="container">
+	<div class="et_pb_extra_row container-width-change-notify">
+						<div class="et_pb_extra_column odd column-1">
+					<div id="text-17" class="et_pb_widget widget_text"><h4 class="widgettitle">Faculty of Mathematics and Information Science</h4>	
+                    <div class="textwidget"><p style="color: rgb(189, 189, 189);"><i class="wp-svg-location location"></i> 00-662 Warszawa<br />
+ul. Koszykowa 75
+
+
+</div>
+</body>
+</html>

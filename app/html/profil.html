@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="../css/mainPage.css">
+    <script src="../js/mainPage.js"></script>
+    <link rel="stylesheet" href="../css/profil.css">
+</head>
+<body>
+<h1>Financial web aplication</h1>
+
+<!-- Menu bar -->
+<ul>
+  <li><a href="#home" onclick="go_to_main_page()">Home</a></li>
+  <li class="dropdown"><a href="#options" class="dropbtn">Options</a>
+    <div class="dropdown-content">
+      <a href="#" onclick="add_payment()">Add payment</a>
+      <a href="#" onclick="join_family()">Join the family</a>
+      <a href="#" onclick="create_family()">Create the new family</a>
+    </div>
+  </li>
+  <li><a href="#profil">Profil</a></li>
+
+  <li style="float:right"><a href="#logout" onclick="logout()">Log out</a></li>
+  <li style="float:right"><a href="#about" onclick="change_page_about()">About</a></li>
+</ul>
+
+<div align="center">
+<h4>My account</h4>
+<img class="profile-image" src=../images/avatar.png width="160">
+    <table>
+        <tr>
+            <td><strong>Username:</strong></td><td>Ada</td>
+        </tr>
+        <tr>
+            <td><strong>E-mail:</strong></td><td>ada@gmail.com</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

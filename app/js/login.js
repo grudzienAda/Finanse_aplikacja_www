@@ -1,0 +1,25 @@
+var attempt = 3; // Variable to count number of attempts.
+// Below function Executes on click of login button.
+function validate() {
+	var username = document.getElementById("username").value;
+	var password = document.getElementById("password").value;
+	if (username == "Formget" && password == "123"){
+		window.location.href = "mainPage.html"; // Redirecting to other page.
+		alert("Logged in successfully"); // bez tej linijki nie dziala, ale komunikat sie nie wyswietla
+	}
+	else {
+		attempt--;// Decrementing by one.
+		alert("You have left "+attempt+" attempt.");
+		// Disabling fields after 3 attempts.
+		if(attempt == 0){
+			document.getElementById("username").disabled = true;
+			document.getElementById("password").disabled = true;
+			document.getElementById("submit").disabled = true;
+		}
+	}
+}
+
+//cancel login
+function cancel() {
+    window.location.href = "premainPage.html";
+}
