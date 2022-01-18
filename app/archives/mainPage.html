@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="./css/mainPage.css">
+</head>
+
+<body>
+<h1>Financial web aplication</h1>
+
+<script src="./js/paymentModal.js"></script>
+
+<input type="button" value="Register" onclick="change_page_register()"/>
+<input type="button" value="Log in" onclick="change_page_login()"/>
+<input type="button" value="Add payment" onclick="add_payment()"/>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+<div class="modal-dialog">
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">Add payment</h4>
+    </div>
+    <div class="modal-body">
+        <label for="number"><b>Amount: </b></label>
+        <input type="number" placeholder="Enter amount" required>
+
+        <label for="date"><b>Date: </b></label>
+        <input type="date" placeholder="Enter payment date" required>
+
+        <label for="checkbox"><b>Category name: </b></label>
+        <select name="categories" id="categories">
+            <option value="Job">Job</option>
+            <option value="Health">Health</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+    <div class="modal-footer">
+        <input type="button" value="Close" onclick="close_add_payment()"/>
+    </div>
+    </div>
+      
+</div>  
+</div>
+
+</body>
+</html>
