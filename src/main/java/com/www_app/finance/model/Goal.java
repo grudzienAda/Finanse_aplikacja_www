@@ -28,15 +28,15 @@ public class Goal {
     @Column(name = "family_id")
     private Integer familyId;
 
-    public Goal(String goalName, float amount, LocalDateTime goalStartDate, LocalDateTime goalEndDate, boolean isCompleted, boolean isTerminated, Integer userId, Integer familyId) {
+    public Goal(String goalName, LocalDateTime goalStartDate, LocalDateTime goalEndDate, Integer userId, Integer familyId) {
         this.goalName = goalName;
-        this.amount = amount;
+        this.amount = 0;
         this.goalStartDate = goalStartDate;
         this.goalEndDate = goalEndDate;
-        this.isCompleted = isCompleted;
-        this.isTerminated = isTerminated;
         this.userId = userId;
         this.familyId = familyId;
+        this.isCompleted = false;
+        this.isTerminated = false;
     }
 
     public Goal() {
