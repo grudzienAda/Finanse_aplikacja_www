@@ -24,9 +24,19 @@ function addUser() {
     var username = document.getElementById("username").value;
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
+    var password2 = document.getElementById("password-repeat").value;
 
-    var urlString = USERS_URL + "add/?name=" + username + "&mail=" + email + "&password=" + password;
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", urlString, true);
-    xhr.send();
+    if(password!=password2) {
+        alert("Repeated password is different!");
+    }
+    else {
+        var urlString = USERS_URL + "add?name=" + username + "&mail=" + email + "&password=" + password;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", urlString, true);
+        xhr.send();
+        window.location.href = "premainPage.html";
+        alert("Succesfully registered!"); //nie wyswietla sie:(
+    }
+
+    
 }
