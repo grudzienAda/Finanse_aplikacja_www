@@ -1,15 +1,14 @@
-USERS_URL = "http://localhost:8080/api/users/"
+USERS_URL = "http://localhost:8080/api/payments/"
 
-//obecny stan konta
+
 function update_account() {
-	var url = USERS_URL + "userAccount?userId=" + USER_ID;
+	const url = USERS_URL + "userAccount?userId=" + USER_ID;
 	const xhr = new XMLHttpRequest();
 
 	xhr.open('GET', url);
 	xhr.send();
 
 	xhr.onload = function() {
-		let accountBalance = xhr.response;
-		document.getElementById("accountBalance").innerHTML = accountBalance;
+		document.getElementById("accountBalance").innerHTML = xhr.response;
 	}
 }

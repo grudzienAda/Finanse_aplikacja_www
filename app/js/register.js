@@ -6,7 +6,6 @@ function goToPremainPage() {
 }
 
 function validate() {
-    const username = document.getElementById("username").value;
     const password1 = document.getElementById("password").value;
     const password2 = document.getElementById("password-repeat").value;
 
@@ -16,27 +15,19 @@ function validate() {
     else {
         addUser();
         window.location.href = "loginForm.html";
-        alert("Successfully registered!"); //nie wyswietla sie:(
+        alert("Successfully registered!");
     }
 }
 
 function addUser() {
-    var username = document.getElementById("username").value;
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var password2 = document.getElementById("password-repeat").value;
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-    if(password!=password2) {
-        alert("Repeated password is different!");
-    }
-    else {
-        var urlString = USERS_URL + "add?name=" + username + "&mail=" + email + "&password=" + password;
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", urlString, true);
-        xhr.send();
-        window.location.href = "premainPage.html";
-        alert("Succesfully registered!"); //nie wyswietla sie:(
-    }
+    const urlString = USERS_URL + "add/?name=" + username + "&mail=" + email + "&password=" + password;
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", urlString, true);
+    xhr.send();
 
     
 }

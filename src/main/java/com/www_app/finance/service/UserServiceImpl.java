@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService{
             try {
                 userRepository.save(user);
                 familyRepository.createFamily("Private account", user.getUserId());
-                familyRepository.addUserToFamily(user.getUserId(), familyRepository.getLastAddedFamilyId());
+                //familyRepository.addUserToFamily(user.getUserId(), familyRepository.getLastAddedFamilyId());
                 return 1;
             } catch (Exception e) {
                 logger.info("Unable to add new user.");

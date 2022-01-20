@@ -1,5 +1,6 @@
 package com.www_app.finance.api;
 
+import com.www_app.finance.model.Family;
 import com.www_app.finance.service.FamilyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,11 @@ public class FamilyController {
     @Autowired
     public FamilyController(FamilyServiceImpl familyService) {
         this.familyService = familyService;
+    }
+
+    @GetMapping()
+    public @ResponseBody Iterable<Family> getFamiliesForUser(Integer userId) {
+        return familyService.getFamiliesForUser(userId);
     }
 
     @GetMapping(path="/{userId}")

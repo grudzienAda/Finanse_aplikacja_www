@@ -1,6 +1,7 @@
 package com.www_app.finance.service;
 
 import com.www_app.finance.dao.FamilyRepository;
+import com.www_app.finance.model.Family;
 import com.www_app.finance.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,8 @@ public class FamilyServiceImpl implements FamilyService{
     }
 
     @Override
-    public Integer getUserPrivateFamilyId(Integer userid) {
-        return familyRepository.getUserPrivateFamilyId(userid);
+    public Integer getUserPrivateFamilyId(Integer userId) {
+        return familyRepository.getUserPrivateFamilyId(userId);
     }
 
     @Override
@@ -30,6 +31,11 @@ public class FamilyServiceImpl implements FamilyService{
     @Override
     public Integer removeFamily(Integer familyId) {
         return familyRepository.removeFamily(familyId);
+    }
+
+    @Override
+    public Iterable<Family> getFamiliesForUser(Integer userId) {
+        return familyRepository.getFamiliesForUser(userId);
     }
 
     @Override

@@ -1,7 +1,7 @@
 
 USERS_URL = "http://localhost:8080/api/users/"
 FAMILIES_URL = "http://localhost:8080/api/families/"
-let attempt = 3; // Variable to count number of attempts.
+let attempt = 3;
 
 function validate() {
 	const email = document.getElementById("email").value;
@@ -43,23 +43,24 @@ function saveUserIdAndMail() {
 	const xhr2 = new XMLHttpRequest();
 	xhr2.open('GET', USERS_URL + email);
 	xhr2.responseType = "json";
-	xhr2.send();
 
 	xhr2.onload = function() {
 		let userJson = xhr2.response;
 		localStorage.setItem('userId', userJson.userId);
 		localStorage.setItem('userMail', userJson.mail);
 	}
+	xhr2.send();
+
 }
 
 function saveUserFamilyId() {
 	const xhr2 = new XMLHttpRequest();
 	xhr2.open('GET', FAMILIES_URL + localStorage.getItem('userId'));
-	xhr2.send();
 
 	xhr2.onload = function() {
 		localStorage.setItem('familyId', xhr2.response);
 	}
+	xhr2.send();
 }
 
 function cancel() {

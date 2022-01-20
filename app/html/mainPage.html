@@ -64,21 +64,25 @@
     <div class="modal-body">
         <table>
         <tr>
-            <td><label for="number"><b>Amount: </b></label></td>
+            <td><label for="amount"><b>Amount: </b></label></td>
             <td><input type="number" id="amount" placeholder="Enter amount" required></td>
         </tr>
         <tr>
-            <td><label for="date"><b>Date: </b></label></td>
+            <td><label for="paymentDate"><b>Date: </b></label></td>
             <td><input type="date" id="paymentDate" placeholder="Enter payment date" required><br></td>
         </tr>
         <tr>
-            <td><label for="checkbox"><b>Category name: </b></label></td>
+            <td><label for="categoryName"><b>Category name: </b></label></td>
             <td><select name="categories" id="categoryName">
                 <option value="Job">Job</option>
                 <option value="Health">Health</option>
                 <option value="Entertainment">Entertainment</option>
                 <option value="Other">Other</option>
             </select></td>
+        </tr>
+        <tr>
+            <td><label for="familyName"><b>Date: </b></label></td>
+            <td><input type="text" id="familyName" placeholder="Select family" required><br></td>
         </tr>
         </table>
     </div><br>
@@ -104,11 +108,11 @@
         </button>
     </div>
     <div class="modal-body">
-        <label for="text"><b>Goal name: </b></label>
+        <label for="goalName"><b>Goal name: </b></label>
         <input type="text" id="goalName" placeholder="Enter goal name" required><br>
-        <label for="date"><b>goalStartDate: </b></label>
+        <label for="goalStartDate"><b>goalStartDate: </b></label>
         <input type="date" id="goalStartDate" placeholder="Enter goalStartDate"><br>
-        <label for="text"><b>goalEndDate: </b></label>
+        <label for="goalEndDate"><b>goalEndDate: </b></label>
         <input type="text" id="goalEndDate" placeholder="Enter goalEndDate"><br>
     </div>
     <div class="modal-footer">
@@ -132,7 +136,7 @@
         </button>
     </div>
     <div class="modal-body">
-        <label for="text"><b>Family name: </b></label>
+        <label for="newFamilyName"><b>Family name: </b></label>
         <input type="text" id="newFamilyName" placeholder="Enter new family name" required>
     </div>
     <div class="modal-footer">
