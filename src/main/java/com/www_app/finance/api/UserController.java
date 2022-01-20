@@ -36,7 +36,7 @@ public class UserController {
         return userService.logIn(mail, password);
     }
 
-    @GetMapping(path = "/users/{mail}")
+    @GetMapping(path = "/{mail}")
     public @ResponseBody User getUserByMail(@PathVariable String mail) {
         return userService.getUserByMail(mail);
     }

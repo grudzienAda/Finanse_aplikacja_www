@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Registration</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script  src="../js/register.js"></script>
+</head>
+<body>
+
+ <form id="registerFormId" method="post">
+  <div class="imgcontainer">
+   <img src="../images/avatar.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" id="username" required>
+
+      <label for="email"><b>E-mail address</b></label>
+      <br>
+      <input type="email" placeholder="Enter e-mail address" id="email" required>
+      <br>
+
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id="password" required>
+
+      <label for="password-repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Enter Repeated Password" id="password-repeat" required>
+
+      <button type="submit" id="register-btn" onclick="addUser()">Register</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn" onclick="goToPremainPage()">Cancel</button>
+  </div>
+</form> 
+
+</body>
+</html>
