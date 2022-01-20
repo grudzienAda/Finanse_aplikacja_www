@@ -13,7 +13,7 @@
     <script src="../js/account.js"></script>
 </head>
 
-<body>
+<body onload="update_account()">
 <header>
     <h1>Financial web aplication <img src="../images/money.png" alt="app logo" width="40">
 </header>
@@ -38,7 +38,16 @@
 </nav>
 
 <section>
-    Account balance: <p id="accountBalance"></p>
+
+    <div class="card" id="accountBalanceDiv">
+      <div class="header">
+        <h1><p id="accountBalance"></p></h1>
+      </div>
+
+      <div class="container">
+        <p>Account balance</p>
+      </div>
+    </div>
 </section>
 
 <section>
