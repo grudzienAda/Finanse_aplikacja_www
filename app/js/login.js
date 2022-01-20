@@ -1,6 +1,4 @@
 
-
-
 USERS_URL = "http://localhost:8080/api/users/"
 var attempt = 3; // Variable to count number of attempts.
 
@@ -37,6 +35,7 @@ function validate() {
 			xhr2.onload = function() {
 				let userJson = xhr2.response;
 				USER_ID = alert(userJson.userId);
+				USER_MAIL = alert(userJson.mail);
 				sessionStorage.setItem('userID', USER_ID);//przechowanie id
 			}
 			const USER_ID = sessionStorage.getItem('userID');//tak sie wyciaga wartosc z magazynu
