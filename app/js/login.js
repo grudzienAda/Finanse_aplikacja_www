@@ -1,13 +1,11 @@
-
-
-
 USERS_URL = "http://localhost:8080/api/users/"
-var attempt = 3; // Variable to count number of attempts.
+FAMILIES_URL = "http://localhost:8080/api/families/"
+let attempt = 3; // Variable to count number of attempts.
 
 function validate() {
-	var email = document.getElementById("email").value;
-	var password = document.getElementById("password").value;
-	var url = USERS_URL + "login?mail=" + email + "&password=" + password;
+	const email = document.getElementById("email").value;
+	const password = document.getElementById("password").value;
+	const url = USERS_URL + "login?mail=" + email + "&password=" + password;
 	const xhr = new XMLHttpRequest();
 
 	xhr.open('GET', url);
@@ -29,18 +27,9 @@ function validate() {
 		}
 		else {
 			//https://javascript.info/xmlhttprequest
-			const xhr2 = new XMLHttpRequest();
-			xhr2.open('GET', USERS_URL + "login?{mail}=" + email);
-			xhr.responseType = "json";
-			xhr2.send();
-
-			xhr2.onload = function() {
-				let userJson = xhr2.response;
-				USER_ID = alert(userJson.userId);
-				sessionStorage.setItem('userID', USER_ID);//przechowanie id
-			}
-			const USER_ID = sessionStorage.getItem('userID');//tak sie wyciaga wartosc z magazynu
-			
+			saveUserIdAndMail();
+			saveUserFamilyId();
+			alert(localStorage.getItem("familyId"));
 			window.location.href = "mainPage.html";
 
 		}
@@ -48,7 +37,30 @@ function validate() {
 	xhr.send();
 }
 
-//cancel login
+function saveUserIdAndMail() {
+	const email = document.getElementById("email").value;
+	const xhr2 = new XMLHttpRequest();
+	xhr2.open('GET', USERS_URL + email);
+	xhr2.responseType = "json";
+	xhr2.send();
+
+	xhr2.onload = function() {
+		let userJson = xhr2.response;
+		localStorage.setItem('userId', userJson.userId);
+		localStorage.setItem('userMail', userJson.mail);
+	}
+}
+
+function saveUserFamilyId() {
+	const xhr2 = new XMLHttpRequest();
+	xhr2.open('GET', FAMILIES_URL + localStorage.getItem('userId'));
+	xhr2.send();
+
+	xhr2.onload = function() {
+		localStorage.setItem('familyId', xhr2.response);
+	}
+}
+
 function cancel() {
     window.location.href = "premainPage.html";
 }

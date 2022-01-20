@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path="api/users")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 
     private final UserServiceImpl userService;
@@ -32,7 +33,6 @@ public class UserController {
     }
 
     @GetMapping(path="/login")
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public @ResponseBody Integer logIn(@RequestParam String mail, @RequestParam String password) {
         return userService.logIn(mail, password);
     }

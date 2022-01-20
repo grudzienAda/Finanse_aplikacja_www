@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("api/payments")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PaymentController {
     private final PaymentServiceImpl paymentService;
 

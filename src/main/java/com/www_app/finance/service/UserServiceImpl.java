@@ -1,5 +1,6 @@
 package com.www_app.finance.service;
 
+import com.www_app.finance.dao.FamilyRepository;
 import com.www_app.finance.dao.UserRepository;
 import com.www_app.finance.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,13 @@ import java.util.logging.Logger;
 @Service
 public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
+    private final FamilyRepository familyRepository;
     private static Logger logger = Logger.getLogger(UserServiceImpl.class.getName());
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, FamilyRepository familyRepository) {
         this.userRepository = userRepository;
+        this.familyRepository = familyRepository;
     }
 
     @Override
@@ -23,6 +26,8 @@ public class UserServiceImpl implements UserService{
         if (getUserByMail(user.getMail()) == null) {
             try {
                 userRepository.save(user);
+                familyRepository.createFamily("Private account", user.getUserId());
+                familyRepository.addUserToFamily(user.getUserId(), familyRepository.getLastAddedFamilyId());
                 return 1;
             } catch (Exception e) {
                 logger.info("Unable to add new user.");

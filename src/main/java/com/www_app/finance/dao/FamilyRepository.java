@@ -9,6 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface FamilyRepository extends CrudRepository<Family, Integer> {
+    @Query(value = "SELECT IDENT_CURRENT('families')", nativeQuery = true)
+    Integer getLastAddedFamilyId();
+
+    @Query(value="SELECT f.family_id FROM families f " +
+            "JOIN members m ON m.family_id=f.family_id WHERE f.family_name='Private account' AND m.user_id=?1", nativeQuery = true)
+    Integer getUserPrivateFamilyId(Integer userId);
+
     @Transactional
     @Modifying
     @Query(value = "SET TRANSACTION ISOLATION LEVEL READ COMMITTED " +

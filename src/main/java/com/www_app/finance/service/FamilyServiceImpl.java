@@ -17,6 +17,11 @@ public class FamilyServiceImpl implements FamilyService{
     }
 
     @Override
+    public Integer getUserPrivateFamilyId(Integer userid) {
+        return familyRepository.getUserPrivateFamilyId(userid);
+    }
+
+    @Override
     public Integer createFamily(String name, String mail) {
         User user = userService.getUserByMail(mail);
         return familyRepository.createFamily(name, user.getUserId());

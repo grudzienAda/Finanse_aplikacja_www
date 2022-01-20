@@ -6,12 +6,18 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/families")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class FamilyController {
     private final FamilyServiceImpl familyService;
 
     @Autowired
     public FamilyController(FamilyServiceImpl familyService) {
         this.familyService = familyService;
+    }
+
+    @GetMapping(path="/{userId}")
+    public Integer getUserPrivateFamilyId(@PathVariable Integer userId) {
+        return  familyService.getUserPrivateFamilyId(userId);
     }
 
     @PostMapping(path="/{familyId}/add")

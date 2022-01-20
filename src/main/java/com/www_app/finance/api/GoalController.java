@@ -4,15 +4,13 @@ import com.www_app.finance.model.Goal;
 import com.www_app.finance.service.GoalServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("api/goals")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class GoalController {
     private final GoalServiceImpl goalService;
 
@@ -30,9 +28,4 @@ public class GoalController {
         Goal goal = new Goal(name, goalStartDate, goalEndDate, userId, familyId);
         goalService.createGoal(goal);
     }
-
-
-
-
-
 }

@@ -1,8 +1,8 @@
 USERS_URL = "http://localhost:8080/api/families/"
 
 function createFamily() {
-    var name = document.getElementById("newFamilyName").value;
-    var email = document.getElementById("userEmail").value;
+    const name = document.getElementById("newFamilyName").value;
+    const email = document.getElementById("userEmail").value;
     var familyId;
 
     var urlString = USERS_URL + "add/&name=" + name + "mail=" + email;
