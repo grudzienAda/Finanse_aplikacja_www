@@ -7,7 +7,7 @@ function addPayment() {
     var categoryName = document.getElementById("categoryName").value;
 
 
-    var urlString = USERS_URL + "add/?amount=" + amount + "&paymentDate=" + paymentDate + "&idUser" + USER_ID + "&idFamily" + idFamily + "&categoryName=" + categoryName;
+    var urlString = USERS_URL + "add?amount=" + amount + "&paymentDate=" + paymentDate + "&idUser=" + USER_ID + "&idFamily=" + idFamily + "&categoryName=" + categoryName;
     var xhr = new XMLHttpRequest();
     xhr.open("POST", urlString, true);
     xhr.send();
