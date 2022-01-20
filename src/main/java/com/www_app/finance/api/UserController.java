@@ -32,11 +32,13 @@ public class UserController {
     }
 
     @GetMapping(path="/login")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public @ResponseBody Integer logIn(@RequestParam String mail, @RequestParam String password) {
         return userService.logIn(mail, password);
     }
 
     @GetMapping(path = "/{mail}")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public @ResponseBody User getUserByMail(@PathVariable String mail) {
         return userService.getUserByMail(mail);
     }
