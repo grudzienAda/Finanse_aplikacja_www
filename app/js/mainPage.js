@@ -15,12 +15,21 @@ function create_family() {
 function close_create_family() {
     document.getElementById("createFamilyModal").style.display = "none";
 }
-function join_family() {
-    document.getElementById("joinFamilyModal").style.display = "block";
+function add_user_to_family() {
+    document.getElementById("AddUserToFamilyModal").style.display = "block";
 }
-function close_join_family() {
-    document.getElementById("joinFamilyModal").style.display = "none";
+function close_add_user_to_family() {
+    document.getElementById("AddUserToFamilyModal").style.display = "none";
 }
+function create_goal() {
+    document.getElementById("createGoalModal").style.display = "block";
+}
+function close_create_goal() {
+    document.getElementById("createGoalModal").style.display = "none";
+}
+
+
+
 
 function logout() {
     var out = confirm("Are you sure?");

@@ -7,6 +7,10 @@
     <link rel="icon" type="image/x-icon" href="../images/money.png">
     <link rel="stylesheet" href="../css/mainPage.css">
     <script src="../js/mainPage.js"></script>
+    <script src="../js/family.js"></script>
+    <script src="../js/goals.js"></script>
+    <script src="../js/payment.js"></script>
+
 </head>
 
 <body>
@@ -14,6 +18,7 @@
     <h1>Financial web aplication <img src="../images/money.png" alt="app logo" width="40">
 </header>
 
+<p>USER_ID</p>
 
 <!-- Menu bar -->
 <nav>
@@ -22,8 +27,9 @@
       <li class="dropdown"><a href="#options" class="dropbtn">Options</a>
         <div class="dropdown-content">
           <a href="#" onclick="add_payment()">Add payment</a>
-          <a href="#" onclick="join_family()">Join the family</a>
+          <a href="#" onclick="create_goal()">Create goal</a>
           <a href="#" onclick="create_family()">Create the new family</a>
+          <a href="#" onclick="add_user_to_family()">add_user_to_family</a>
         </div>
       </li>
       <li><a href="#profil" onclick="change_page_profil()">Profil</a></li>
@@ -61,15 +67,15 @@
         <table>
         <tr>
             <td><label for="number"><b>Amount: </b></label></td>
-            <td><input type="number" placeholder="Enter amount" required></td>
+            <td><input type="number" id="amount" placeholder="Enter amount" required></td>
         </tr>
         <tr>
             <td><label for="date"><b>Date: </b></label></td>
-            <td><input type="date" placeholder="Enter payment date" required><br></td>
+            <td><input type="date" id="paymentDate" placeholder="Enter payment date" required><br></td>
         </tr>
         <tr>
             <td><label for="checkbox"><b>Category name: </b></label></td>
-            <td><select name="categories" id="categories">
+            <td><select name="categories" id="categoryName">
                 <option value="Job">Job</option>
                 <option value="Health">Health</option>
                 <option value="Entertainment">Entertainment</option>
@@ -80,13 +86,41 @@
     </div><br>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_add_payment()">Close</button>
-        <button type="button" class="btn btn-primary">Add payment</button>
+        <button type="button" class="btn btn-primary" onclick="addPayment()">Add payment</button>
     </div>
     </div>
       
 </div>  
 </div>
 
+<!-- Modal create goal -->
+<div class="modal fade" id="createGoalModal" role="dialog">
+<div class="modal-dialog">
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">Join the family</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" onclick="close_create_goal()">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <label for="text"><b>Goal name: </b></label>
+        <input type="text" id="goalName" placeholder="Enter goal name" required><br>
+        <label for="date"><b>goalStartDate: </b></label>
+        <input type="date" id="goalStartDate" placeholder="Enter goalStartDate"><br>
+        <label for="text"><b>goalEndDate: </b></label>
+        <input type="text" id="goalEndDate" placeholder="Enter goalEndDate"><br>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_create_goal()">Close</button>
+        <button type="button" class="btn btn-primary" onclick="addGoal()">Create</button>
+    </div>
+    </div>
+      
+</div>  
+</div>
 <!-- Modal create family -->
 <div class="modal fade" id="createFamilyModal" role="dialog">
 <div class="modal-dialog">
@@ -101,7 +135,7 @@
     </div>
     <div class="modal-body">
         <label for="text"><b>Family name: </b></label>
-        <input type="text" placeholder="Enter new family name" required>
+        <input type="text" id="newFamilyName" placeholder="Enter new family name" required>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_create_family()">Close</button>
@@ -111,25 +145,25 @@
       
 </div>  
 </div>
-<!-- Modal join family -->
-<div class="modal fade" id="joinFamilyModal" role="dialog">
+<!-- Modal add user to family -->
+<div class="modal fade" id="AddUserToFamilyModal" role="dialog">
 <div class="modal-dialog">
     
     <!-- Modal content-->
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title">Join the family</h4>
+        <h4 class="modal-title">Add user to family</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" onclick="close_join_family()">&times;</span>
+          <span aria-hidden="true" onclick="close_add_user_to_family()">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <label for="search"><b>Family name: </b></label>
-        <input type="search" placeholder="Enter family name" required>
+        <label for="email"><b>new member's e-mail address</b></label>
+        <input type="email" placeholder="Enter e-mail address" id="email_new_member" required>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_join_family()">Close</button>
-        <button type="button" class="btn btn-primary">Join</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_add_user_to_family()">Close</button>
+        <button type="button" class="btn btn-primary" onclick="add_user_to_family()">Add</button>
     </div>
     </div>
       

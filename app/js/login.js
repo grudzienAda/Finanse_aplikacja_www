@@ -1,3 +1,6 @@
+
+
+
 USERS_URL = "http://localhost:8080/api/users/"
 var attempt = 3; // Variable to count number of attempts.
 
@@ -25,7 +28,21 @@ function validate() {
 			alert("No such user is registered");
 		}
 		else {
+			//https://javascript.info/xmlhttprequest
+			const xhr2 = new XMLHttpRequest();
+			xhr2.open('GET', USERS_URL + "login?{mail}=" + email);
+			xhr.responseType = "json";
+			xhr2.send();
+
+			xhr2.onload = function() {
+				let userJson = xhr2.response;
+				USER_ID = alert(userJson.userId);
+				sessionStorage.setItem('userID', USER_ID);//przechowanie id
+			}
+			const USER_ID = sessionStorage.getItem('userID');//tak sie wyciaga wartosc z magazynu
+			
 			window.location.href = "mainPage.html";
+
 		}
 	};
 	xhr.send();
@@ -35,3 +52,4 @@ function validate() {
 function cancel() {
     window.location.href = "premainPage.html";
 }
+
