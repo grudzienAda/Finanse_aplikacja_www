@@ -38,7 +38,7 @@ function validate() {
 	xhr.send();
 }
 
-function saveUserIdAndMail() {
+function saveUserIdAndMail() {//and save username
 	const email = document.getElementById("email").value;
 	const xhr2 = new XMLHttpRequest();
 	xhr2.open('GET', USERS_URL + email);
@@ -48,6 +48,7 @@ function saveUserIdAndMail() {
 		let userJson = xhr2.response;
 		localStorage.setItem('userId', userJson.userId);
 		localStorage.setItem('userMail', userJson.mail);
+		localStorage.setItem('username', userJson.name);
 	}
 	xhr2.send();
 
