@@ -6,7 +6,7 @@ let attempt = 3;
 function validate() {
 	const email = document.getElementById("email").value;
 	const password = document.getElementById("password").value;
-	const url = USERS_URL + "login?mail=" + email + "&password=" + password;
+	const url = USERS_URL + "login/?mail=" + email + "&password=" + password;
 	const xhr = new XMLHttpRequest();
 
 	xhr.open('GET', url);
