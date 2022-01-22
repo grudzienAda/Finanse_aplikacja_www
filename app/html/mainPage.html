@@ -38,7 +38,6 @@
 </nav>
 
 <section>
-
     <div class="card" id="accountBalanceDiv">
       <div class="header">
         <h1><p id="accountBalance"></p></h1>
@@ -51,11 +50,41 @@
 </section>
 
 <section>
+    <table id="filters">
+        <tr>
+            <th></th>
+            <th><label for="text"><b>paymentType: </b></label></th>
+            <th><label for="date"><b>startDate: </b></label></th>
+            <th><label for="date"><b>endDate: </b></label></th>
+            <th><label for="checkbox"><b>Category name: </b></label></th>
+        
+        </tr>
+        <tr>
+            <th>Search filters: </th>
+            <th><input type="text" id="paymentTypeFilter" placeholder="Enter paymentType"></th>
+            <th><input type="date" id="startDateFilter" placeholder="Enter startDate"><br></td></th>
+            <th><input type="date" id="endDateFilter" placeholder="Enter endDate"><br></td></th>
+            <th><select name="categories" id="categoryNameFilter">
+                    <option value="Job">Job</option>
+                    <option value="Health">Health</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Other">Other</option>
+                </select></th>
+        </tr>      
+    </table>
+
+    <p id="paymentTableDiv"></p>
+        <table id="paymentTable">
+            <tr class="header">
+                <th style="width:20%;">Amount</th>
+                <th style="width:25%;">Date</th>
+                <th style="width:40%;">Category</th>
+                <th style="width:15%;">Type</th>
+            </tr>
+        </table> 
+    
 </section>
 
-<article>
-    Elolskdm
-</article>
 
 
 
