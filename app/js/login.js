@@ -18,10 +18,13 @@ function validate() {
 			attempt--;
 			alert("You have left "+attempt+" attempt.");
 			if(attempt === 0){
-				//TODO: pozwala się logować
+				//TODO: pozwala się logować -> chyba dziala?
 				document.getElementById("username").disabled = true;
 				document.getElementById("password").disabled = true;
 				document.getElementById("submit").disabled = true;
+				alert("Try in 0.5 min.");
+				setTimeout(function () {make_visible()}, 0.5 * 60000);
+
 			}
 		} else if (data === 0) {
 			alert("No such user is registered");
@@ -36,6 +39,13 @@ function validate() {
 		}
 	};
 	xhr.send();
+}
+
+function make_visible() {
+	document.getElementById("username").disabled = false;
+	document.getElementById("password").disabled = false;
+	document.getElementById("submit").disabled = false;
+	attempt = 3;
 }
 
 function saveUserIdAndMail() {//and save username
