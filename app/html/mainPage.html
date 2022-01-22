@@ -13,7 +13,7 @@
     <script src="../js/account.js"></script>
 </head>
 
-<body onload="update_account()">
+<body onload="update_account();update_payment_table()">
 <header>
     <h1>Financial web aplication <img src="../images/money.png" alt="app logo" width="40">
 </header>
@@ -53,35 +53,40 @@
     <table id="filters">
         <tr>
             <th></th>
-            <th><label for="text"><b>paymentType</b></label></th>
+            <th><label for="categories"><b>paymentType</b></label></th>
+            <th><label for="categories"><b>Category name</b></label></th>
             <th><label for="date"><b>startDate</b></label></th>
-            <th><label for="date"><b>endDate</b></label></th>
-            <th><label for="checkbox"><b>Category name</b></label></th>
-        
+            <th><label for="date"><b>endDate</b></label></th>   
         </tr>
         <tr>
             <th>Search filters: </th>
-            <th><input type="text" id="paymentTypeFilter" placeholder="Enter paymentType"></th>
-            <th><input type="date" id="startDateFilter" placeholder="Enter startDate"><br></td></th>
-            <th><input type="date" id="endDateFilter" placeholder="Enter endDate"><br></td></th>
-            <th><select name="categories" id="categoryNameFilter">
+            <th><select name="categories" id="paymentTypeFilter" onchange="update_payment_table()">
+                    <option value="EXPENSE">EXPENSE</option>
+                    <option value="INCOME">INCOME</option>
+                    <option value="ALL">ALL</option>
+                </select>
+            </th>
+            <th><select name="categories" id="categoryNameFilter" onchange="update_payment_table()">
                     <option value="Job">Job</option>
                     <option value="Health">Health</option>
                     <option value="Entertainment">Entertainment</option>
                     <option value="Other">Other</option>
-                </select></th>
+                </select>
+            </th>
+            <th><input type="date" id="startDateFilter" placeholder="Enter startDate" onchange="update_payment_table()"><br></td></th>
+            <th><input type="date" id="endDateFilter" placeholder="Enter endDate" onchange="update_payment_table()"><br></td></th>
         </tr>      
     </table>
 
-    <p id="paymentTableDiv"></p>
-        <table id="paymentTable">
-            <tr class="header">
-                <th style="width:20%;">Amount</th>
-                <th style="width:25%;">Date</th>
-                <th style="width:40%;">Category</th>
-                <th style="width:15%;">Type</th>
-            </tr>
-        </table> 
+    
+    <table id="paymentTable">
+        <tr class="header">
+            <th style="width:20%;" id="amountCol">Amount</th>
+            <th style="width:30%;" id="dateCol">Date</th>
+            <th style="width:50%;" id="categoryCol">Category</th>
+            <!--<th style="width:15%;">Type</th>-->
+        </tr>            
+    </table> 
     
 </section>
 

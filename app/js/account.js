@@ -16,55 +16,45 @@ function update_account() {
 		document.getElementById("accountBalance").innerHTML = "123" + " pln";
 	}
 }
-
 function update_payment_table() {
 	const paymentTypeFilter = document.getElementById("paymentTypeFilter").value;
 	const startDateFilter = document.getElementById("startDateFilter").value;
 	const endDateFilter = document.getElementById("endDateFilter").value;
 	const categoryNameFilter = document.getElementById("categoryNameFilter").value;
 
-	const url = USERS_URL + "{familyId}?familyId=" + FAMILY_ID + "&userId=" + USER_ID + "&paymentType=" + paymentType + "&startDate=" + startDate + "&endDate=" + endDate + "&categoryName=" + categoryName;
-	const xhr = new XMLHttpRequest();
-
-	xhr.open('GET', url);
-	xhr.responseType = "json";
-	xhr.send();
-
-	xhr.onload = function() {
-		newTable = xhr.response;
-		newTable = [
-			{"Amount": "23", "Date": "25.05.2003", "Category": "Job", "Type": "out"}
-		];
-		// EXTRACT VALUE FOR HTML HEADER. 
-        var col = [];
-        for (var i = 0; i < newTable.length; i++) {
-            for (var key in newTable[i]) {
-                if (col.indexOf(key) === -1) {
-                    col.push(key);
-                }
-            }
+    var jsondata = [
+		{"paymentId": "1", "amount": "23", "paymentDate": "25.05.2003", "userId": "2", "familyId": "5", "categoryName": "Job"},
+        {"paymentId": "1", "amount": "23", "paymentDate": "25.05.2003", "userId": "2", "familyId": "5", "categoryName": "Job"}
+	];
+    //get the table headers 
+    var col = ["amount", "paymentDate", "categoryName"];
+               
+    var table = document.getElementById("paymentTable");
+    table.innerHTML = ""; //czyszczenie pobranej tabelki
+ 
+    //Add the data rows.
+    for (var i = 0; i < jsondata.length; i++) {
+        tr = table.insertRow(-1);
+        for (var j = 0; j < col.length; j++) {
+            var tabCell = tr.insertCell(-1);
+            var checkdata = jsondata[i][col[j]];
+            tabCell.innerHTML = jsondata[i][col[j]];
         }
-		// CREATE DYNAMIC TABLE.
-        var table = document.createElement("table");
-		// CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+    }
+    var divContainer = document.getElementById("paymentTableRows");
+    divContainer.appendChild(table);
+}
 
-        var tr = table.insertRow(-1);                   // TABLE ROW.
 
-        for (var i = 0; i < col.length; i++) {
-            var th = document.createElement("th");      // TABLE HEADER.
-            th.innerHTML = col[i];
-            tr.appendChild(th);
-        }
-		// ADD JSON DATA TO THE TABLE AS ROWS.
-        for (var i = 0; i < newTable.length; i++) {
-			alert(i);
-            tr = table.insertRow(-1);
-
-            for (var j = 0; j < col.length; j++) {
-                var tabCell = tr.insertCell(-1);
-                tabCell.innerHTML = newTable[i][col[j]];
-            }
-        }
-		// FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-        document.getElementById("paymentTableDiv").appendChild(table);
-	}
+function pagenation()
+{
+    let options = {
+        numberPerPage:20, 
+        goBar:true, 
+        pageCounter:true, 
+    };
+    let filterOptions = {
+        el:'#searchBox'
+    };
+    paginate.init('#Datagrid',options,filterOptions);
+}
