@@ -1,6 +1,6 @@
 
-USERS_URL = "http://localhost:8080/api/users/"
-FAMILIES_URL = "http://localhost:8080/api/families/"
+const USERS_URL = "http://localhost:8080/api/users/"
+const FAMILIES_URL = "http://localhost:8080/api/families/"
 let attempt = 3;
 
 function validate() {
@@ -33,7 +33,6 @@ function validate() {
 			//https://javascript.info/xmlhttprequest
 			saveUserIdAndMail();
 			saveUserFamilyId();
-			alert(localStorage.getItem("familyId"));
 			window.location.href = "mainPage.html";
 
 		}

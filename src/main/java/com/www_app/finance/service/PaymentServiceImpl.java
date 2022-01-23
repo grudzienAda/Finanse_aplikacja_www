@@ -76,7 +76,11 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public float getAccountState(Integer userId) {
-        return paymentRepository.getAccountState(userId);
+
+        if (paymentRepository.getAccountState(userId).isEmpty()) {
+            return 0;
+        }
+        return paymentRepository.getAccountState(userId).get();
     }
 
     @Override

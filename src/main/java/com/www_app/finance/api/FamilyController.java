@@ -17,7 +17,7 @@ public class FamilyController {
     }
 
     @GetMapping()
-    public @ResponseBody Iterable<Family> getFamiliesForUser(Integer userId) {
+    public @ResponseBody Iterable<Family> getFamiliesForUser(@RequestParam Integer userId) {
         return familyService.getFamiliesForUser(userId);
     }
 
@@ -26,8 +26,8 @@ public class FamilyController {
         return  familyService.getUserPrivateFamilyId(userId);
     }
 
-    @PostMapping(path="/{familyId}/add")
-    public Integer addUserToFamily(@RequestParam String mail, @PathVariable Integer familyId) {
+    @PostMapping(path="/add")
+    public Integer addUserToFamily(@RequestParam String mail, @RequestParam Integer familyId) {
         return familyService.addUserToFamily(mail, familyId);
     }
 

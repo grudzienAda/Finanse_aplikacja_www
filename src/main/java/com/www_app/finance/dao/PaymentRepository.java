@@ -5,6 +5,7 @@ import com.www_app.finance.model.Payment;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Optional;
 
 
 public interface PaymentRepository extends CrudRepository<Payment, Integer> {
@@ -15,7 +16,7 @@ public interface PaymentRepository extends CrudRepository<Payment, Integer> {
 
     @Query(value = "SELECT SUM(amount) FROM payments p " +
             "WHERE p.id_user=?1", nativeQuery = true)
-    float getAccountState(Integer userId);
+    Optional<Float> getAccountState(Integer userId);
 
     @Query(value = "SELECT SUM(amount) FROM payments p " +
             "WHERE p.family_id=?1", nativeQuery = true)

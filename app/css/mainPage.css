@@ -1,4 +1,13 @@
 ﻿/* The Modal (background) */
+body {
+  font-family: "Open Sans", non-serif, sans-serif;
+  margin: 0px;
+}
+
+h1 {
+  padding: 0px 30px;
+}
+
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -18,22 +27,46 @@
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 50%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
-.close {
+.modal-header #close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  margin: 0px 20px;
 }
 
-.close:hover,
-.close:focus {
+.modal-header #close:hover, #close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+input[type=date] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 25px;
+
+  font-family: "Open Sans", non-serif, sans-serif;
+}
+
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 25px;
+
+  font-family: "Open Sans", non-serif, sans-serif;
 }
 
 ul {
@@ -50,15 +83,19 @@ li {
 li a {
   display: block;
   color: #000;
-  padding: 8px;
+  padding: 12px 20px;
+  min-width: 80px;
   text-decoration: none;
+  text-align: center;
+  transition: 200ms;
 }
 
 /* Change the link color on hover */
 li a:hover {
-  background-color: #555;
+  background-color: #535353;
   color: white;
 }
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -76,11 +113,12 @@ li a:hover {
   text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown-content a:hover {background-color: #535353;}
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 
 /* Style the header */
 header {
@@ -95,26 +133,85 @@ footer {
 }
 
 img {
-        display: inline-block;
-    }
+  display: inline-block;
+}
 
 div.card {
   margin: 30px;
   width: 250px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: rgb(218, 218, 218) 4px 4px 8px;
   text-align: center;
+  border-radius: 25px;
 }
 
 div.header {
   background-color: #4CAF50;
+  border-radius:  25px 25px 0px 0px;
   color: white;
   padding: 10px;
   font-size: 40px;
+  min-height: 100px;
 }
 
 div.container {
-  padding: 10px;
+  padding: 15px;
 }
+
+#center-premain-page {
+  width: 50%;
+  margin: 100px auto;
+  padding: 20px 0px;
+
+  border: 1px solid #999;
+  border-radius: 25px;
+
+  box-shadow: rgb(218, 218, 218) 10px 10px 15px;
+}
+
+#center-premain-page h1 {
+  text-align: center;
+  font-size: 48px;
+}
+
+#center-premain-page div {
+  text-align: center;
+  padding: 20px;
+}
+
+#center-premain-page a {
+  text-decoration: none;
+  color: black;
+  padding: 12px 18px;
+  margin: 5px 20px;
+  border-radius: 25px;
+  width: 160px;
+  display: inline-block;
+  font-size: 16px;
+
+  transition: 200ms;
+}
+
+#center-premain-page a:hover {
+  background-color: rgb(112, 112, 112);
+  box-shadow: rgb(218, 218, 218) 4px 4px 8px;
+  color: whitesmoke;
+}
+
+#awesome-authors {
+  position: fixed;
+  top: 95%;
+  right: 30px;
+  font-style: italic;
+  color:rgba(31, 31, 31, 0.308)
+}
+
+#footer {
+  position: absolute;
+  bottom: 100px;
+  height: 100px;
+}
+
+
 
 #paymentTable {
   background-image: url('/css/searchicon.png'); /* Add a search icon to input */
@@ -150,5 +247,34 @@ div.container {
 }
 
 #filters {
-    text-align: left;
+  text-align: left;
+  margin: 0px 20px 20px;
 }
+
+#filters tr {
+  padding: 5px 0px;
+}
+
+#filters th {
+  padding: 4px 10px 0px;
+  min-width: 100px;
+}
+
+#filters select {
+  padding: 5px 14px;
+  width: 150px;
+  border-radius: 10px;
+  border: 1px solid #999;
+
+  font-family: "Open Sans", non-serif, sans-serif;
+}
+
+#filters input[type=date] {
+  padding: 5px 14px;
+  border-radius: 10px;
+  border: 1px solid #999;
+  width: 150px;
+
+  font-family: "Open Sans", non-serif, sans-serif;
+}
+
