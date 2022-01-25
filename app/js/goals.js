@@ -59,32 +59,3 @@ function createGoalsList() {
     xhr.send();
 }
 
-function getAndCreatePaymentTable(url) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.responseType = "json";
-    xhr.onload = function() {
-            const jsonData = xhr.response;
-            const col = ["amount", "paymentDate", "categoryName"];
-            const table = document.getElementById("paymentTable");
-            //czyszczenie wierszy pobranej tabelki (oprocz naglowkow):
-            const tableHeaderRowCount = 1;
-            const rowCount = table.rows.length;
-            for (let i = tableHeaderRowCount; i < rowCount; i++) {
-                table.deleteRow(tableHeaderRowCount);
-            }
-
-            //Add the data rows.
-            for (let i = 0; i < jsonData.length; i++) {
-                tr = table.insertRow(-1);
-                for (let j = 0; j < col.length; j++) {
-                    const tabCell = tr.insertCell(-1);
-                    tabCell.innerHTML = jsonData[i][col[j]];
-                }
-            }
-            const divContainer = document.getElementById("paymentTable");
-            divContainer.appendChild(table);
-        }
-
-    xhr.send();
-}
