@@ -16,13 +16,16 @@ function addGoal() {
 }
 
 function addPaymentToGoal() {
-    const email = document.getElementById("email-new-member").value;
-    const familiesList = document.getElementById("families-list");
+    const amount = document.getElementById("donation").value;
+    const goalsList = document.getElementById("goals-list");
+    const donationDate = document.getElementById("donationDate").value;
+    const dDate = new Data(donationDate);
 
-    const urlString = GOALS_URL + "add?mail=" + email + "&familyId=" + familiesList.value;
+    const urlString = GOALS_URL + "donate?goalId=" + goalsList.value + "&amount=" + amount + "&userId=" + localStorage.getItem("userId")
+        + "&goalPaymentDate=" + dDate.toISOString();
     const xhr = new XMLHttpRequest();
-    //xhr.open("POST", urlString, true);
-    //xhr.send();
+    xhr.open("POST", urlString, true);
+    xhr.send();
 }
 
 function createGoalsList() {
@@ -53,5 +56,35 @@ function createGoalsList() {
         const divContainer = document.getElementById("goalsTable");
         divContainer.appendChild(table);
     }
+    xhr.send();
+}
+
+function getAndCreatePaymentTable(url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = "json";
+    xhr.onload = function() {
+            const jsonData = xhr.response;
+            const col = ["amount", "paymentDate", "categoryName"];
+            const table = document.getElementById("paymentTable");
+            //czyszczenie wierszy pobranej tabelki (oprocz naglowkow):
+            const tableHeaderRowCount = 1;
+            const rowCount = table.rows.length;
+            for (let i = tableHeaderRowCount; i < rowCount; i++) {
+                table.deleteRow(tableHeaderRowCount);
+            }
+
+            //Add the data rows.
+            for (let i = 0; i < jsonData.length; i++) {
+                tr = table.insertRow(-1);
+                for (let j = 0; j < col.length; j++) {
+                    const tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = jsonData[i][col[j]];
+                }
+            }
+            const divContainer = document.getElementById("paymentTable");
+            divContainer.appendChild(table);
+        }
+
     xhr.send();
 }

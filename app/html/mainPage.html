@@ -13,7 +13,7 @@
     <script src="../js/payment.js"></script>
     <script src="../js/account.js"></script>
 </head>
-<body onload="load_payment_table(); update_account2(); createGoalsList();">
+<body onload="load_payment_table(); update_account2(); createGoalsTable();">
     <header>
         <h1>Financial web aplication</h1>
         <img src="../images/money.png" alt="app logo" width="40">
@@ -85,23 +85,26 @@
                 </th>
             </tr>
         </table>
-            <h3 style="padding-left:10px">Your payments</h3>
-            <table id="paymentTable">
-                <tr class="header">
-                    <th style="width:20%;" id="amountCol">Amount</th>
-                    <th style="width:30%;" id="dateCol">Date</th>
-                    <th style="width:50%;" id="categoryCol">Category</th>
-                    <!--<th style="width:15%;">Type</th>-->
-                </tr>
-            </table>
-            <h3 style="padding-left:10px">Your goals</h3>
-            <table id="goalsTable">
-                <tr class="header">
-                    <th style="width:20%;" id="goal-name-col">Name</th>
-                    <th style="width:30%;" id="goal-amount-col">Amount</th>
-                    <th style="width:50%;" id="goal-end-date-col">End date</th>
-                </tr>
-            </table>
+
+        <br>
+        <h3 style="padding-left:10px">Your payments</h3>
+        <table id="paymentTable">
+            <tr class="header">
+                <th style="width:20%;" id="amountCol">Amount</th>
+                <th style="width:30%;" id="dateCol">Date</th>
+                <th style="width:50%;" id="categoryCol">Category</th>
+                <!--<th style="width:15%;">Type</th>-->
+            </tr>
+        </table>
+        <br><br>
+        <h3 style="padding-left:10px">Your goals</h3>
+        <table id="goalsTable">
+            <tr class="header">
+                <th style="width:20%;" id="goal-name-col">Name</th>
+                <th style="width:30%;" id="goal-amount-col">Amount</th>
+                <th style="width:50%;" id="goal-end-date-col">End date</th>
+            </tr>
+        </table>
 
     </section>
 <!-- Modal add payment -->
@@ -203,7 +206,15 @@
                             <label><b>Amount:</b></label>
                         </td>
                         <td>
-                            <input type="email" placeholder="Enter e-mail address" id="email-new-member2" required>
+                            <input type="number" placeholder="Enter amount" id="donation" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="donationDate"><b>Donation Date: </b></label>
+                        </td>
+                        <td>
+                            <input type="date" id="donationDate" placeholder="Enter donation date"><br>
                         </td>
                     </tr>
                 </table>
