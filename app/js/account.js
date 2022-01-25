@@ -88,3 +88,4 @@ function update_payment_table_manual() {//ostatecznie do usuniecia!
     var divContainer = document.getElementById("paymentTable");
     divContainer.innerHTML(table);
 }
+

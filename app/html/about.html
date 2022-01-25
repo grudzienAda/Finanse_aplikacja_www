@@ -1,32 +1,33 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title></title>
+<html lang="en"><head>
+    <title>About</title>
     <link rel="icon" type="image/x-icon" href="../images/money.png">
     <link rel="stylesheet" href="../css/mainPage.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <script src="../js/mainPage.js"></script>
 </head>
 <body>
-<h1>Financial web aplication</h1>
-
+<header>
+        <h1>Financial web aplication</h1>
+        <img src="../images/money.png" alt="app logo" width="40">
+</header>
 <!-- Menu bar -->
 <ul>
     <li><a href="#home" onclick="go_to_main_page()">Home</a></li>
     <li class="dropdown"><a href="#options" class="dropbtn">Options</a>
         <div class="dropdown-content">
             <a href="#" onclick="add_payment()">Add payment</a>
-            <a href="#" onclick="join_family()">Join the family</a>
+            <a href="#" onclick="create_goal()">Create goal</a>
             <a href="#" onclick="create_family()">Create the new family</a>
+            <a href="#" onclick="add_user_to_family()">Add user to family</a>
         </div>
     </li>
-    <li><a href="#profil">Profil</a></li>
+    <li><a href="#profil" onclick="change_page_profil()">Profil</a></li>
 
-    <li style="float:right" onclick="logout()"><a href="#logout">Log out</a></li>
-    <li style="float:right"><a href="#about">About</a></li>
+    <li style="float:right"><a href="#logout" onclick="logout()">Log out</a></li>
+    <li style="float:right"><a href="#about" onclick="change_page_about()">About</a></li>
 </ul>
-
 <div>
     <h2>About application</h2>
     trata ta ta
@@ -35,6 +36,139 @@
     <h4>Authors</h4>
     Maria Kałuska<br>
     Adrianna Grudzień
+</div>
+
+
+<!-- Modal add payment -->
+    <div class="modal fade" id="addPaymentModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+        <span type="button" id="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" onclick="close_add_payment()">&times;</span>
+        </span>
+                </div>
+    <div class="modal-body">
+        <table>
+        <tr>
+            <td><label for="amount"><b>Amount: </b></label></td>
+            <td><input type="number" id="amount" placeholder="Enter amount" required></td>
+        </tr>
+        <tr>
+            <td><label for="paymentDate"><b>Date: </b></label></td>
+            <td><input type="date" id="paymentDate" placeholder="Enter payment date" required><br></td>
+        </tr>
+        <tr>
+            <td><label for="categoryName"><b>Category name: </b></label></td>
+            <td><select name="categories" id="categoryName">
+                <option value="Job">Job</option>
+                <option value="Health">Health</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Other">Other</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><label><b>Select family: </b></label></td>
+            <td><select id="families-list-0"><script>createFamiliesList("families-list-0");</script></select><br></td>
+        </tr>
+        </table>
+    </div><br>
+        <div id="center-buttons">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_add_payment()">Close</button>
+            <button type="button" class="btn btn-primary" onclick="addPayment()">Add payment</button>
+        </div>
+    </div>
+</div>  
+</div>
+
+    <!-- Modal create goal -->
+    <div class="modal fade" id="createGoalModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span type="button" id="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" onclick="close_create_goal()">&times;</span>
+        </span>
+                </div>
+                <div class="modal-body">
+                    <label for="goalName"><b>Goal name: </b></label>
+                    <input type="text" id="goalName" placeholder="Enter goal name" required><br>
+                    <label for="goalStartDate"><b>goalStartDate: </b></label>
+                    <input type="date" id="goalStartDate" placeholder="Enter goal start date"><br>
+                    <label for="goalEndDate"><b>goalEndDate: </b></label>
+                    <input type="text" id="goalEndDate" placeholder="Enter goal end date"><br>
+                </div>
+                <div id="center-buttons">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_create_goal()">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addGoal()">Create</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<!-- Modal create family -->
+    <div class="modal fade" id="createFamilyModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span type="button" id="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" onclick="close_create_family()">&times;</span>
+        </span>
+                </div>
+    <div class="modal-body">
+        <label for="newFamilyName"><b>Family name: </b></label>
+        <input type="text" id="newFamilyName" placeholder="Enter new family name" required>
+    </div>
+        <div id="center-buttons">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_create_family()">Close</button>
+            <button type="button" class="btn btn-primary">Create</button>
+        </div>
+    </div>
+</div>  
+</div>
+<!-- Modal add user to family -->
+    <div class="modal fade" id="AddUserToFamilyModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span type="button" id="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" onclick="close_add_user_to_family()">&times;</span>
+                    </span>
+                </div>
+    <div class="modal-body" >
+        <table>
+            <tr>
+                <td>
+                    <label><b>Select family:</b></label>
+                </td>
+                <td>
+                    <select id="families-list">
+                        <script>createFamiliesList("families-list");</script>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email-new-member"><b>new member's e-mail address</b></label>
+                </td>
+                <td>
+                    <input type="email" placeholder="Enter e-mail address" id="email-new-member" required>
+                </td>
+            </tr>
+        </table>
+    </div>
+        <div id="center-buttons">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_add_user_to_family()">Close</button>
+            <button type="button" class="btn btn-primary" onclick="add_user_to_family()">Add</button>
+        </div>
+    </div>
+</div>  
 </div>
 </body>
 </html>
