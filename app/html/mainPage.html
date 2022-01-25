@@ -26,6 +26,7 @@
                 <div class="dropdown-content">
                     <a href="#" onclick="add_payment()">Add payment</a>
                     <a href="#" onclick="create_goal()">Create goal</a>
+                    <a href="#" onclick="add_payment_to_goal()">Add payment to goal</a>
                     <a href="#" onclick="create_family()">Create the new family</a>
                     <a href="#" onclick="add_user_to_family()">Add user to family</a>
                 </div>
@@ -77,7 +78,17 @@
                 <th><input type="date" id="endDateFilter" placeholder="Enter endDate" onchange="update_payment_table()"><br></td></th>
             </tr>
         </table>
+
         <table id="paymentTable">
+            <tr class="header">
+                <th style="width:20%;" id="amountCol">Amount</th>
+                <th style="width:30%;" id="dateCol">Date</th>
+                <th style="width:50%;" id="categoryCol">Category</th>
+                <!--<th style="width:15%;">Type</th>-->
+            </tr>
+        </table>
+
+        <table id="goalsTable">
             <tr class="header">
                 <th style="width:20%;" id="amountCol">Amount</th>
                 <th style="width:30%;" id="dateCol">Date</th>
@@ -137,7 +148,6 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Join the family</h4>
                     <span type="button" id="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" onclick="close_create_goal()">&times;</span>
         </span>
@@ -152,19 +162,60 @@
                 </div>
                 <div id="center-buttons">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_create_goal()">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="addGoal()">Create</button>
+                    <button type="button" class="btn btn-primary" onclick="addGoal()">Create goal</button>
                 </div>
             </div>
 
         </div>
     </div>
+
+<!-- Modal add payment to goal -->
+<div class="modal fade" id="addPaymentToGoalModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" onclick="close_add_payment_to_goal()">&times;</span>
+                </span>
+            </div>
+            <div class="modal-body" >
+                <table>
+                    <tr>
+                        <td>
+                            <label><b>Select goal:</b></label>
+                        </td>
+                        <td>
+                            <select id="goals-list">
+                                <script>createGoalsList("goals-list");</script>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="amount-to-goal"><b>Amount:</b></label>
+                        </td>
+                        <td>
+                            <input type="email" placeholder="Enter e-mail address" id="email-new-member2" required>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="center-buttons">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_add_payment_to_goal()">Close</button>
+                <button type="button" class="btn btn-primary" onclick="add_payment_to_goal()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>  
+
+
 <!-- Modal create family -->
     <div class="modal fade" id="createFamilyModal" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Join the family</h4>
                     <span type="button" id="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" onclick="close_create_family()">&times;</span>
         </span>
@@ -186,7 +237,6 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add user to family</h4>
                     <span type="button" id="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" onclick="close_add_user_to_family()">&times;</span>
                     </span>

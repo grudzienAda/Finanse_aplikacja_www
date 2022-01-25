@@ -27,6 +27,12 @@ function create_goal() {
 function close_create_goal() {
     document.getElementById("createGoalModal").style.display = "none";
 }
+function add_payment_to_goal() {
+    document.getElementById("addPaymentToGoalModal").style.display = "block";
+}
+function close_add_payment_to_goal() {
+    document.getElementById("addPaymentToGoalModal").style.display = "none";
+}
 
 
 
