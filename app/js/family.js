@@ -1,4 +1,4 @@
-FAMILIES_URL = "http://localhost:8080/api/families/"
+const FAMILIES_URL = "http://localhost:8080/api/families/"
 
 function createFamily() {
     const name = document.getElementById("newFamilyName").value;
@@ -8,6 +8,9 @@ function createFamily() {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", urlString, true);
     xhr.send();
+    createFamiliesList("families-list");
+    createFamiliesList("families-list-0");
+    window.location.reload(true);
 }
 
 function addUserToFamily() {

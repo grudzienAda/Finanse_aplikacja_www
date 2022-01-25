@@ -16,6 +16,8 @@ function addPayment() {
     xhr.open("POST", urlString, true);
     xhr.send();
     update_account2();
+    update_payment_table();
+    window.location.reload(true);
 
 }
 
@@ -23,48 +25,93 @@ function update_account2() {
     const url = PAYMENTS_URL + "userAccount?userId=" + USER_ID;
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', url);
-    xhr.send();
+    xhr.open('GET', url, true);
 
     xhr.onload = function() {
         document.getElementById("accountBalance").innerHTML = xhr.response;
     }
+    xhr.send();
 }
 
 function getAndCreatePaymentTable(url) {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.responseType = "json";
-    alert('thrill');
     xhr.onload = function() {
-        const jsondata = xhr.response;
-        alert(jsondata);
-        const col = ["amount", "paymentDate", "categoryName"];
-        const table = document.getElementById("paymentTable");
-        //czyszczenie wierszy pobranej tabelki (oprocz naglowkow):
-        const tableHeaderRowCount = 1;
-        const rowCount = table.rows.length;
-        for (let i = tableHeaderRowCount; i < rowCount; i++) {
-            table.deleteRow(tableHeaderRowCount);
+            const jsonData = xhr.response;
+            const col = ["amount", "paymentDate", "categoryName"];
+            const table = document.getElementById("paymentTable");
+            //czyszczenie wierszy pobranej tabelki (oprocz naglowkow):
+            const tableHeaderRowCount = 1;
+            const rowCount = table.rows.length;
+            for (let i = tableHeaderRowCount; i < rowCount; i++) {
+                table.deleteRow(tableHeaderRowCount);
+            }
+
+            //Add the data rows.
+            for (let i = 0; i < jsonData.length; i++) {
+                tr = table.insertRow(-1);
+                for (let j = 0; j < col.length; j++) {
+                    const tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = jsonData[i][col[j]];
+                }
+            }
+            const divContainer = document.getElementById("paymentTable");
+            divContainer.appendChild(table);
         }
 
+    xhr.send();
+}
+
+function update_payment_table() {
+    const paymentType = document.getElementById("paymentTypeFilter").value;
+    const startDate = document.getElementById("startDateFilter").value;
+    const endDate = document.getElementById("endDateFilter").value;
+    const categoryName = document.getElementById("categoryNameFilter").value;
+
+    let url = PAYMENTS_URL + localStorage.getItem("familyId") + "?userId=" + USER_ID + "&paymentType=" + paymentType;
+    console.log(url);
+    if (startDate !== null) {
+        const sDate = new Date(startDate);
+        url = url + "&startDate=" + sDate.toISOString();
+    }
+    if (endDate !== null) {
+        const eDate = new Date(endDate);
+        url = url + "&endDate=" + eDate.toISOString();
+    }
+    if (categoryName !== "All") {
+        url += "&categoryName=" + categoryName;
+    }
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = "json";
+    xhr.onload = function() {
+        const jsonData = xhr.response;
+        const col = ["amount", "paymentDate", "categoryName"];
+
+        const table = document.getElementById("paymentTable");
+        const tableHeaderRowCount = 1;
+        var rowCount = table.rows.length;
+        for (var i = tableHeaderRowCount; i < rowCount; i++) {
+            table.deleteRow(tableHeaderRowCount);
+        }
         //Add the data rows.
-        for (let i = 0; i < jsondata.length; i++) {
+        for (var i = 0; i < jsonData.length; i++) {
             tr = table.insertRow(-1);
-            for (let j = 0; j < col.length; j++) {
-                const tabCell = tr.insertCell(-1);
-                const checkdata = jsondata[i][col[j]];
-                tabCell.innerHTML = jsondata[i][col[j]];
+            for (var j = 0; j < col.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = jsonData[i][col[j]];
             }
         }
         const divContainer = document.getElementById("paymentTable");
         divContainer.appendChild(table);
     }
-    xhr.send()
+    xhr.send();
 }
+
+
 
 function load_payment_table() {
     const url = PAYMENTS_URL + localStorage.getItem("familyId");
-    alert(url);
     getAndCreatePaymentTable(url);
 }

@@ -47,12 +47,12 @@ public class GoalController {
         return goalService.getAllGoals();
     }
 
-    @GetMapping()
+    @GetMapping(path="/family")
     public Iterable<Goal> getGoalsByFamilyId(@RequestParam Integer familyId) {
         return goalService.getGoalsByFamilyId(familyId);
     }
 
-    @GetMapping
+    @GetMapping(path="/user")
     public Iterable<Goal> getGoalsByUserId(@RequestParam Integer userId) {
         return goalService.getGoalsByUserId(userId);
     }
