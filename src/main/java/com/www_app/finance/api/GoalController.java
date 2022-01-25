@@ -28,4 +28,32 @@ public class GoalController {
         Goal goal = new Goal(name, goalStartDate, goalEndDate, userId, familyId);
         goalService.createGoal(goal);
     }
+
+    @PostMapping(path="/donate")
+    public void donateGoal(@RequestParam Integer goalId,
+                           @RequestParam float amount,
+                           @RequestParam Integer userId,
+                           @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime goalPaymentDate) {
+        goalService.donateGoal(goalId, amount, userId, goalPaymentDate);
+    }
+
+    @GetMapping(path="/goalSate")
+    public float getGoalState(@RequestParam Integer idGoal) {
+        return goalService.getGoalState(idGoal);
+    }
+
+    @GetMapping
+    public Iterable<Goal> getAllGoals() {
+        return goalService.getAllGoals();
+    }
+
+    @GetMapping()
+    public Iterable<Goal> getGoalsByFamilyId(@RequestParam Integer familyId) {
+        return goalService.getGoalsByFamilyId(familyId);
+    }
+
+    @GetMapping
+    public Iterable<Goal> getGoalsByUserId(@RequestParam Integer userId) {
+        return goalService.getGoalsByUserId(userId);
+    }
 }

@@ -13,7 +13,7 @@
     <script src="../js/payment.js"></script>
     <script src="../js/account.js"></script>
 </head>
-<body onload="update_account();update_payment_table()">
+<body onload="load_payment_table()">
     <header>
         <h1>Financial web aplication</h1>
         <img src="../images/money.png" alt="app logo" width="40">
@@ -145,9 +145,9 @@
                 <div class="modal-body">
                     <label for="goalName"><b>Goal name: </b></label>
                     <input type="text" id="goalName" placeholder="Enter goal name" required><br>
-                    <label for="goalStartDate"><b>goalStartDate: </b></label>
+                    <label for="goalStartDate"><b>Goal Start Date: </b></label>
                     <input type="date" id="goalStartDate" placeholder="Enter goal start date"><br>
-                    <label for="goalEndDate"><b>goalEndDate: </b></label>
+                    <label for="goalEndDate"><b>Goal End Date: </b></label>
                     <input type="text" id="goalEndDate" placeholder="Enter goal end date"><br>
                 </div>
                 <div id="center-buttons">
