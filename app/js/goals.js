@@ -15,7 +15,7 @@ function addGoal() {
     window.location.reload(true);
 }
 
-function add_payment_to_goal() {
+function addPaymentToGoal() {
     const email = document.getElementById("email-new-member").value;
     const familiesList = document.getElementById("families-list");
 
