@@ -15,14 +15,22 @@ function addGoal() {
     window.location.reload(true);
 }
 
-function add_payment_to_goal() {
-    const email = document.getElementById("email-new-member").value;
-    const familiesList = document.getElementById("families-list");
+function addPaymentToGoal() {
+    const amount = document.getElementById("donation").value;
+    const goalsList = document.getElementById("goals-list");
+    const donationDate = document.getElementById("donationDate").value;
+    
+    const urlString = GOALS_URL + "donate/?goalId=" + goalsList.value + "&amount=" + amount + "&userId=" + localStorage.getItem("userId");
 
-    const urlString = GOALS_URL + "add?mail=" + email + "&familyId=" + familiesList.value;
+    if (donationDate !== null) {
+        const dDate = new Data(donationDate);
+        urlString = urlString + "&goalPaymentDate=" + dDate.toISOString();
+    }
+
+    
     const xhr = new XMLHttpRequest();
-    //xhr.open("POST", urlString, true);
-    //xhr.send();
+    xhr.open("POST", urlString, true);
+    xhr.send();
 }
 
 function createGoalsList() {
@@ -55,3 +63,4 @@ function createGoalsList() {
     }
     xhr.send();
 }
+
