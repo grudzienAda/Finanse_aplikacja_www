@@ -115,3 +115,4 @@ function load_payment_table() {
     const url = PAYMENTS_URL + localStorage.getItem("familyId");
     getAndCreatePaymentTable(url);
 }
+
