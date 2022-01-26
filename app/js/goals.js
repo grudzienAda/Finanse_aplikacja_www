@@ -19,10 +19,15 @@ function addPaymentToGoal() {
     const amount = document.getElementById("donation").value;
     const goalsList = document.getElementById("goals-list");
     const donationDate = document.getElementById("donationDate").value;
-    const dDate = new Data(donationDate);
+    
+    const urlString = GOALS_URL + "donate/?goalId=" + goalsList.value + "&amount=" + amount + "&userId=" + localStorage.getItem("userId");
 
-    const urlString = GOALS_URL + "donate?goalId=" + goalsList.value + "&amount=" + amount + "&userId=" + localStorage.getItem("userId")
-        + "&goalPaymentDate=" + dDate.toISOString();
+    if (donationDate !== null) {
+        const dDate = new Data(donationDate);
+        urlString = urlString + "&goalPaymentDate=" + dDate.toISOString();
+    }
+
+    
     const xhr = new XMLHttpRequest();
     xhr.open("POST", urlString, true);
     xhr.send();
