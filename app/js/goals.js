@@ -17,13 +17,13 @@ function addGoal() {
 
 function addPaymentToGoal() {
     const amount = document.getElementById("donation").value;
-    const goalsList = document.getElementById("goals-list");
+    const goalsList = document.getElementById("goals-dropdown");
     const donationDate = document.getElementById("donationDate").value;
     
-    const urlString = GOALS_URL + "donate/?goalId=" + goalsList.value + "&amount=" + amount + "&userId=" + localStorage.getItem("userId");
+    let urlString = GOALS_URL + "donate/?goalId=" + goalsList.value + "&amount=" + amount + "&userId=" + localStorage.getItem("userId");
 
     if (donationDate !== null) {
-        const dDate = new Data(donationDate);
+        const dDate = new Date(donationDate);
         urlString = urlString + "&goalPaymentDate=" + dDate.toISOString();
     }
 
@@ -60,6 +60,26 @@ function createGoalsList() {
         }
         const divContainer = document.getElementById("goalsTable");
         divContainer.appendChild(table);
+    }
+    xhr.send();
+}
+
+function createGoalsDropdown(elementId) {
+    const selectList = document.getElementById(elementId);
+    const urlString = GOALS_URL + "user?userId=" + localStorage.getItem("userId");
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", urlString, true);
+    xhr.responseType = "json";
+
+    xhr.onload = function() {
+        const goals = xhr.response;
+        for(let i = 0; i < goals.length; i++) {
+            const item = goals[i];
+            const option = document.createElement("option");
+            option.text = item.goalName;
+            option.value = item.goalId;
+            selectList.add(option);
+        }
     }
     xhr.send();
 }
