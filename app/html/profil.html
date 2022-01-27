@@ -24,6 +24,7 @@
             <div class="dropdown-content">
                 <a href="#" onclick="add_payment()">Add payment</a>
                 <a href="#" onclick="create_goal()">Create goal</a>
+                <a href="#" onclick="add_payment_to_goal()">Add payment to goal</a>
                 <a href="#" onclick="create_family()">Create the new family</a>
                 <a href="#" onclick="add_user_to_family()">Add user to family</a>
             </div>
@@ -105,25 +106,75 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <span type="button" id="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true" onclick="close_create_goal()">&times;</span>
-        </span>
+                        <span aria-hidden="true" onclick="close_create_goal()">&times;</span>
+                    </span>
                 </div>
                 <div class="modal-body">
                     <label for="goalName"><b>Goal name: </b></label>
                     <input type="text" id="goalName" placeholder="Enter goal name" required><br>
-                    <label for="goalStartDate"><b>goalStartDate: </b></label>
+                    <label for="goalStartDate"><b>Goal Start Date: </b></label>
                     <input type="date" id="goalStartDate" placeholder="Enter goal start date"><br>
-                    <label for="goalEndDate"><b>goalEndDate: </b></label>
-                    <input type="text" id="goalEndDate" placeholder="Enter goal end date"><br>
+                    <label for="goalEndDate"><b>Goal End Date: </b></label>
+                    <input type="date" id="goalEndDate" placeholder="Enter goal end date"><br>
                 </div>
                 <div id="center-buttons">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_create_goal()">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="addGoal()">Create</button>
+                    <button type="button" class="btn btn-primary" onclick="addGoal()">Create goal</button>
                 </div>
             </div>
 
         </div>
     </div>
+
+<!-- Modal add payment to goal -->
+<div class="modal fade" id="addPaymentToGoalModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" onclick="close_add_payment_to_goal()">&times;</span>
+                </span>
+            </div>
+            <div class="modal-body" >
+                <table>
+                    <tr>
+                        <td>
+                            <label><b>Select goal:</b></label>
+                        </td>
+                        <td>
+                            <select id="goals-dropdown">
+                                <script>createGoalsDropdown("goals-dropdown");</script>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label><b>Amount:</b></label>
+                        </td>
+                        <td>
+                            <input type="number" placeholder="Enter amount" id="donation" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="donationDate"><b>Donation Date: </b></label>
+                        </td>
+                        <td>
+                            <input type="date" id="donationDate" placeholder="Enter donation date"><br>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="center-buttons">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_add_payment_to_goal()">Close</button>
+                <button type="button" class="btn btn-primary" onclick="addPaymentToGoal()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>  
+
+
 <!-- Modal create family -->
     <div class="modal fade" id="createFamilyModal" role="dialog">
         <div class="modal-dialog">
@@ -140,7 +191,7 @@
     </div>
         <div id="center-buttons">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_create_family()">Close</button>
-            <button type="button" class="btn btn-primary">Create</button>
+            <button type="button" class="btn btn-primary" onclick="createFamily()">Create</button>
         </div>
     </div>
 </div>  
@@ -179,7 +230,7 @@
     </div>
         <div id="center-buttons">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_add_user_to_family()">Close</button>
-            <button type="button" class="btn btn-primary" onclick="add_user_to_family()">Add</button>
+            <button type="button" class="btn btn-primary" onclick="addUserToFamily()">Add</button>
         </div>
     </div>
 </div>  
