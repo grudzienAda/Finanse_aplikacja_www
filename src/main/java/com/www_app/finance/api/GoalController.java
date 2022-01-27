@@ -37,7 +37,7 @@ public class GoalController {
         goalService.donateGoal(goalId, amount, userId, goalPaymentDate);
     }
 
-    @GetMapping(path="/goalSate")
+    @GetMapping(path="/goalState")
     public float getGoalState(@RequestParam Integer idGoal) {
         return goalService.getGoalState(idGoal);
     }

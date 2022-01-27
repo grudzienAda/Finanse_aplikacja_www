@@ -19,9 +19,9 @@ public interface GoalRepository extends CrudRepository<Goal, Integer> {
     @Query(value = "SELECT * FROM goals WHERE family_id=?1", nativeQuery = true)
     Iterable<Goal> getGoalsByFamilyId(Integer familyId);
 
-    @Query(value = "SELECT * FROM goals WHERE id_user=?1", nativeQuery = true)
+    @Query(value = "SELECT *FROM goals WHERE id_user=?1", nativeQuery = true)
     Iterable<Goal> getGoalsByUserId(Integer userId);
 
-    @Query(value = "SELECT SUM(amount) FROM goals_payments WHERE goal_id=?1", nativeQuery = true)
+    @Query(value = "  SELECT COALESCE(SUM(amount), 0) FROM goals_payments WHERE goal_id=?1", nativeQuery = true)
     float getGoalState(Integer idGoal);
 }

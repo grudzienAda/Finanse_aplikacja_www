@@ -26,11 +26,11 @@ function addPaymentToGoal() {
         const dDate = new Date(donationDate);
         urlString = urlString + "&goalPaymentDate=" + dDate.toISOString();
     }
-
     
     const xhr = new XMLHttpRequest();
     xhr.open("POST", urlString, true);
     xhr.send();
+    window.location.reload(true);
 }
 
 function createGoalsList() {
